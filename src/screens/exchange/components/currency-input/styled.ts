@@ -1,28 +1,15 @@
 import styled from 'styled-components';
-import Select from 'react-select';
-import { borderLargeRadiusSize, lightColor, paddingSize, titleSize } from 'styles';
+import { Text } from 'components/layout';
+import { titleSize, errorColor } from 'styles';
 
-export const InputWrapper = styled.div`
+export const Wrapper = styled.div`
     width: 100%;
-    border-radius: ${borderLargeRadiusSize};
-    min-height: 100px;
-    background-color: ${lightColor};
-    margin: 10px 0;
-    padding: ${paddingSize};
-    box-sizing: border-box;
     display: flex;
-`;
-
-export const Column = styled.div`
-    width: 50%;
-`;
-
-export const SelectDropdown = styled(Select)`
-    width: 90%;
+    flex-direction: column;
 `;
 
 export const Input = styled.input`
-    width: 90%;
+    width: 100%;
     height: 30px;
     border: 0;
     background-color: transparent;
@@ -34,4 +21,9 @@ export const Input = styled.input`
         border: none;
         outline: none;
     }
+`;
+
+export const ErrorText = styled(Text)`
+    color: ${errorColor};
+    text-align: right;
 `;

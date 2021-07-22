@@ -1,23 +1,20 @@
 import React from 'react';
-import { Text } from 'components/layout';
-import { InputWrapper, SelectDropdown, Column, Input } from './styled';
+import { Input, Wrapper, ErrorText } from './styled';
 
 export default function CurrencyInput() {
-    const options = [
-        { value: 'eur', label: "Euro" },
-        { value: 'ron', label: "RON" },
-        { value: 'usd', label: "USD" },
-        { value: 'gbp', label: "GBP" },
-    ];
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let value;
+        // remove all non-number characters (except .)
         const unparsedValue = event.target.value.replace(/[^\d.]/g,'');
+        // if there is . and it has more then 2 decimals after it, don't allow others decimals
         if (unparsedValue.indexOf('.') > 0 && unparsedValue.length - 1 - unparsedValue.indexOf('.') >= 2) { 
             value = parseFloat(unparsedValue).toFixed(2);
         } else if (unparsedValue.indexOf('.') === unparsedValue.length - 1) {
+            // if there is . but nothing after it, let it as it is
             value = unparsedValue;
         } else {
+            // otherwise parse the number as float
             value = parseFloat(unparsedValue)
         }
         
@@ -29,14 +26,9 @@ export default function CurrencyInput() {
     };
 
     return (
-        <InputWrapper>
-            <Column>
-                <SelectDropdown options={options} />
-                <Text size={12}>Balance: $ 20</Text>
-            </Column>
-            <Column>
-                <Input placeholder="0.00" onChange={onChange} />
-            </Column>
-        </InputWrapper>
+        <Wrapper>
+            <Input placeholder="0.00" onChange={onChange} />
+            <ErrorText size={10}>Balance exceeded</ErrorText>
+        </Wrapper>
     );
-} 
+}
