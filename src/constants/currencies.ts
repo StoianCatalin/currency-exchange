@@ -1,10 +1,10 @@
 import Currency from "interfaces/currency";
 
 const CURRENCIES: Currency[] = [
-    { value: 'eur', label: "Euro", symbol: '&euro;' },
+    { value: 'eur', label: "Euro", symbol: '€' },
     { value: 'ron', label: "RON", symbol: 'RON' },
-    { value: 'usd', label: "USD", symbol: '&#36;' },
-    { value: 'gbp', label: "GBP", symbol: '&#163;' },
+    { value: 'usd', label: "USD", symbol: '$' },
+    { value: 'gbp', label: "GBP", symbol: '£' },
 ];
 
 export default CURRENCIES;

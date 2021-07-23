@@ -1,4 +1,4 @@
-import { ChangeAmountCurrencyPayload } from "interfaces";
+import { IChangeAmountCurrencyPayload } from "interfaces";
 
 export enum ACTIONS {
     SUBTRACT_CURRENCY = "SUBTRACT_CURRENCY",
@@ -8,23 +8,23 @@ export enum ACTIONS {
 
 export interface ActionBase {
     readonly type: ACTIONS;
-    payload: ChangeAmountCurrencyPayload;
+    payload: IChangeAmountCurrencyPayload;
 }
 
 export class SubtractCurrencyAction implements ActionBase {
     readonly type = ACTIONS.SUBTRACT_CURRENCY;
-    payload: ChangeAmountCurrencyPayload;
+    payload: IChangeAmountCurrencyPayload;
 
-    constructor(payload: ChangeAmountCurrencyPayload) {
+    constructor(payload: IChangeAmountCurrencyPayload) {
         this.payload = payload;
     }
 }
 
 export class AddCurrencyAction implements ActionBase {
     readonly type = ACTIONS.ADD_CURRENCY;
-    payload: ChangeAmountCurrencyPayload;
+    payload: IChangeAmountCurrencyPayload;
 
-    constructor(payload: ChangeAmountCurrencyPayload) {
+    constructor(payload: IChangeAmountCurrencyPayload) {
         this.payload = payload;
     }
 }

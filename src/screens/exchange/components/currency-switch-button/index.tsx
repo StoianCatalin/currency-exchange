@@ -1,10 +1,14 @@
 import { SwitchButton, StyledIcon } from "./styled";
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 
-export default function CurrencySwitchButton() {
+interface IProps {
+    onClick: () => void;
+}
+
+export default function CurrencySwitchButton({ onClick }: IProps) {
 
     return (
-        <SwitchButton>
+        <SwitchButton onClick={() => onClick()}>
             <StyledIcon icon={faExchangeAlt} />
         </SwitchButton>
     );
