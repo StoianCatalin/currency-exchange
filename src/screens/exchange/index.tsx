@@ -9,8 +9,7 @@ import Exchanger from './components/exchanger';
 
 export default function ExchangeScreen() {
     const exchanger = useExchanger();
-    console.log('rerender');
-
+    const { rates, makeTransaction } = exchanger;
     const fromCurrency = CURRENCIES.find(currency => currency.value === exchanger.fromInput.currency);
     const toCurrency = CURRENCIES.find(currency => currency.value === exchanger.toInput.currency);
     if (!fromCurrency || !toCurrency) {
@@ -23,11 +22,11 @@ export default function ExchangeScreen() {
                 <Title>Sell {fromCurrency.label}</Title>
                 <Subtitle>
                     <FontAwesomeIcon icon={faChartArea} />
-                    {fromCurrency.symbol}1 = {toCurrency.symbol}0.32
+                    {fromCurrency.symbol}{rates[fromCurrency.value.toUpperCase()]} = {toCurrency.symbol}{rates[toCurrency.value.toUpperCase()]}
                 </Subtitle>
                 <Divider></Divider>
                 <Exchanger exchanger={exchanger} />
-                <Button>
+                <Button onClick={() => makeTransaction()}>
                     Sell {fromCurrency.label} to {toCurrency.label}
                 </Button>
             </Card>

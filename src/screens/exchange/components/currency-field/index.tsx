@@ -5,9 +5,10 @@ import CurrencyInput from '../currency-input';
 import ICurrency from 'interfaces/currency';
 import { AccountContext } from 'contexts/accounts';
 import { IExchanger } from '../exchanger/hooks/useExchanger';
+import { INPUT_TYPES } from 'contexts/accounts/enums';
 
 interface IProps {
-    type: "from"|"to";
+    type: INPUT_TYPES;
     currencies: ICurrency[];
     exchanger: IExchanger;
 }
@@ -15,7 +16,7 @@ interface IProps {
 export default function CurrencyField({ currencies, exchanger, type }: IProps) {
     const { state } = useContext(AccountContext);
     // Get current input from exchanger based on type;
-    const currentInput = type === "from" ? exchanger.fromInput : exchanger.toInput;
+    const currentInput = type === INPUT_TYPES.FROM ? exchanger.fromInput : exchanger.toInput;
     // Get associated currency of the input;
     const currentCurrency = currencies.find(currency => currency.value === currentInput.currency);
     if (!currentCurrency) {
@@ -29,7 +30,7 @@ export default function CurrencyField({ currencies, exchanger, type }: IProps) {
                     value={currentCurrency}
                     onChange={(value: ICurrency) => exchanger.onChangeCurrency(value, type)}
                 />
-                <Text size={12}>Balance: {currentCurrency.symbol}{state[currentCurrency.value]}</Text>
+                <Text size={12}>Balance: {currentCurrency.symbol}{state[currentCurrency.value].toFixed(2)}</Text>
             </Column>
             <Column>
                 <CurrencyInput exchanger={exchanger} type={type} />

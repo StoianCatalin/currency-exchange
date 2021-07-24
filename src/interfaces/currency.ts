@@ -1,6 +1,7 @@
+import { CURRENCY_SYMBOLS } from "contexts/accounts/enums";
 
 export default interface ICurrency {
-    value: "eur"|"usd"|"gbp"|"ron";
+    value: CURRENCY_SYMBOLS;
     label: string;
     symbol: string;
 }

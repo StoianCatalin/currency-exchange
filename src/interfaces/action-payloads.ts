@@ -1,5 +1,4 @@
-
-export type CURRENCY_SYMBOLS = "eur"|"usd"|"gbp"|"ron";
+import { CURRENCY_SYMBOLS } from "contexts/accounts/enums";
 
 export interface IChangeAmountCurrencyPayload {
     currency: CURRENCY_SYMBOLS;

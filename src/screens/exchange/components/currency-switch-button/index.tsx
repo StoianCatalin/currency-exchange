@@ -8,7 +8,7 @@ interface IProps {
 export default function CurrencySwitchButton({ onClick }: IProps) {
 
     return (
-        <SwitchButton onClick={() => onClick()}>
+        <SwitchButton data-testid="switch-button" onClick={() => onClick()}>
             <StyledIcon icon={faExchangeAlt} />
         </SwitchButton>
     );

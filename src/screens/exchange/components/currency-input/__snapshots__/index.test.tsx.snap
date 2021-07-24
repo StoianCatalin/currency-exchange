@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyInput should render correctly 1`] = `
+<div
+  className="sc-jSFjdj lmQA-DU"
+>
+  <input
+    className="sc-gKAaRy ipBHhz"
+    onChange={[Function]}
+    placeholder="0.00"
+    value="-0"
+  />
+</div>
+`;

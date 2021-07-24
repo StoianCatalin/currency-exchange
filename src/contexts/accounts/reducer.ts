@@ -15,7 +15,7 @@ export const initialState: AccountsState = {
 }
 
 export function accountsReducer(state: AccountsState, action: ActionBase) {
-    const { currency, amount } = action.payload;
+    const { currency, amount } = action?.payload;
     switch(action.type) {
         case ACTIONS.SUBTRACT_CURRENCY:
             return {...state, [currency]: state[currency] - amount};
